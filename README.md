@@ -1,7 +1,3 @@
-# Tao
-
-
-
 ## PRODUCT FEATURES
 
 - Pacient’s anylisis based in TCM methods and results with symptoms, syndromes, meridians states, warning signs, meaning of pulse and thongs exams.
