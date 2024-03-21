@@ -1,5 +1,8 @@
 # Tao
-Back-ended CLI anylisis based in TCM and acupuncture methods and results with symptoms, syndromes, meridians states, warning signs, meaning of pulse and thongs exams using DFF-perceptrons neural network AI.
+
+
+
+## PRODUCT FEATURES
 
 - Pacient’s anylisis based in TCM methods and results with symptoms, syndromes, meridians states, warning signs, meaning of pulse and thongs exams.
 - Previous exams based in CSV files.
