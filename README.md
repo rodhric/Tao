@@ -16,7 +16,7 @@ BACK-END CLI DEVELOPED BY RODRIGO DIAS FOR TRADICIONAL CHINEASE MEDICINE AND ACU
 
 
 ABOUT LOGGING ACCESS NUMBERS
-*** TAO IS PROGRAMMED FOR MANDATORY USE OF CPF FOR ID LOG, THERE IS A SHREWD ALGORITHM FOR IT'S USE AND NOT USED IN USA, FOR TESTING USE THE LINK IN FOOTER OF DOCUMENT ***
+TAO IS PROGRAMMED FOR MANDATORY USE OF CPF FOR ID LOG, THERE IS A SHREWD ALGORITHM FOR IT'S USE AND NOT USED IN USA, FOR TESTING USE THE LINK IN FOOTER OF ITEM
 
 What is a Brazilian CPF?
 A CPF is an individual taxpayer identification number given to people living in Brazil, both native Brazilians and resident aliens, who pay taxes.
@@ -99,9 +99,9 @@ and
 c[2]*10+c[3]*9+c[4]*8+c[5]*7+c[6]*6+
         c[7]*5+c[8]*4+c[9]*3+dv[1]*2+dv[2] = 0 (mod 11) or
                                            = 1 (mod 11) (if dv[2]=0)
-### EXTERNAL LINK
-HYPERLINK FOR GENERATION OR VALID NUMBER'S CHECK:
-https://www.4devs.com.br/gerador_de_cpf
+                                           
+### HYPERLINK FOR GENERATION OR VALID NUMBER'S CHECK:
+### https://www.4devs.com.br/gerador_de_cpf
 
 
 UPDATE'S VERSIONS
