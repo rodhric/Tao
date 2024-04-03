@@ -1,6 +1,6 @@
 # Contributor Covenant Code of Conduct
 
-## Our Pledge
+ANY TYPE OF COPY OF CODE EXTRACTS OR REUSE MUST BE NOTIFIED ON GITHUB OR COPYRIGHT LEGISLATION WILL APPLY.
 
 We as members, contributors, and leaders pledge to make participation in our
 community a harassment-free experience for everyone, regardless of age, body
