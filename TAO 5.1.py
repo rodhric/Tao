@@ -1,14 +1,3 @@
-
-# erro solicitando novamente endereço ao usar end fixo OK
-# erro de quick==True não pular o questionário OK
-# hda em branco sai '' OK
-# export2 gerava lista como string para base de dados OK
-# adição de informações sobre as 4 bases de dados OK
-# armazenamento de pinpoint de endereço rápido movido de RAM para arquivo (ficando disponível em scripts) OK
-# erro export dx (sai 0) OK
-# testar com renyng alterado OK
-# export de pulsos deve ser lista OK
-
 from astral import moon
 import pytz
 import datetime
