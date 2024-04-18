@@ -11918,7 +11918,7 @@ def gerar_arquivos():
                     print("Criando arquivo de log ailog.csv...".upper())
                     print('BASE DE DADOS PARA TREINAMENTO DE ALGORÍTMO DE ANÁLISE IA\n')
                     time.sleep(1.5)
-                    header = ['DIAGNÓSTICO(S)', 'QUANTIDADE DE DIAGNÓSTICO(S)' 'LÍNGUA', 'SEXO-IDADE', 'D1A', 'D1B', 'D1C', 'D2A', 'D2B', 'D2C', 'D3A', 'D3B', 'D3C', 'E1A', 'E1B', 'E1C', 'E2A', 'E2B', 'E2C', 'E3A', 'E3B', 'E3C', 'PULSOS', 'COMPLEIÇÃO', 'COMPLEIÇÃO RENYING',
+                    header = ['DIAGNÓSTICO(S)', 'QUANTIDADE DE DIAGNÓSTICO(S)', 'LÍNGUA', 'SEXO-IDADE', 'D1A', 'D1B', 'D1C', 'D2A', 'D2B', 'D2C', 'D3A', 'D3B', 'D3C', 'E1A', 'E1B', 'E1C', 'E2A', 'E2B', 'E2C', 'E3A', 'E3B', 'E3C', 'PULSOS', 'COMPLEIÇÃO', 'COMPLEIÇÃO RENYING',
                               'SOMA DOS QUADRADOS DE DIAGNÓSTICO(S)', 'SOMA DE DIAGNÓSTICO(S)', 'PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S)', 'PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S)']
                     with open("ailog.csv", "w", encoding="UTF8", newline="") as f:
                         writer = csv.writer(f)
