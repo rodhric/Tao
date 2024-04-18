@@ -1024,12 +1024,8 @@ def home():
                                         'USAR COMO ATUAL? (S/N) ').upper()
                                     if p == 'S':
                                         addr = x
-                                    elif p == 'N':
-                                        pass
-                                    else:
-                                        continue
-                                except:
-                                    continue
+                                except:                                                                       
+                                    pass
                             if pacienteantigo == False and addr != x:
                                 cep = input("\nDigite o CEP: ")
                                 if len(cep) == 8 and cep.isnumeric() == True:
@@ -1074,7 +1070,18 @@ def home():
                                             + str(c5)
                                         )
                                         addr = str(end).upper()
-                                        print(addr)
+                                        addr = str(end)
+                                        nome = addr.replace("Ç", "C")
+                                        nome2 = nome.replace("Á", "A")
+                                        nome3 = nome2.replace("Ã", "A")
+                                        nome4 = nome3.replace("É", "E")
+                                        nome5 = nome4.replace("È", "E")
+                                        nome6 = nome5.replace("À", "A")
+                                        nome7 = nome6.replace("Í", "I")
+                                        nome8 = nome7.replace("Ô", "O")
+                                        nome9 = nome8.replace("Ú", "U")
+                                        addr = str(nome9)
+                                        print(addr)                                        
                                     except:
                                         if rede is True:
                                             addr = str(
@@ -1082,12 +1089,36 @@ def home():
                                                     "\nCEP não localizado! Digite endereço do local atual do atendimento: "
                                                 )
                                             ).upper()
+                                            addr = str(end)
+                                            nome = addr.replace("Ç", "C")
+                                            nome2 = nome.replace("Á", "A")
+                                            nome3 = nome2.replace("Ã", "A")
+                                            nome4 = nome3.replace("É", "E")
+                                            nome5 = nome4.replace("È", "E")
+                                            nome6 = nome5.replace("À", "A")
+                                            nome7 = nome6.replace("Í", "I")
+                                            nome8 = nome7.replace("Ô", "O")
+                                            nome9 = nome8.replace("Ú", "U")
+                                            addr = str(nome9)
+                                            print(addr)                                               
                                         elif rede is False:
                                             addr = str(
                                                 input(
-                                                    "\nServidor indisponível. Digite endereço do local atual do atendimento: "
+                                                    "\nServidor dos Correios indisponível (sem internet). Digite endereço do local atual do atendimento: "
                                                 )
                                             ).upper()
+                                            addr = str(end)
+                                            nome = addr.replace("Ç", "C")
+                                            nome2 = nome.replace("Á", "A")
+                                            nome3 = nome2.replace("Ã", "A")
+                                            nome4 = nome3.replace("É", "E")
+                                            nome5 = nome4.replace("È", "E")
+                                            nome6 = nome5.replace("À", "A")
+                                            nome7 = nome6.replace("Í", "I")
+                                            nome8 = nome7.replace("Ô", "O")
+                                            nome9 = nome8.replace("Ú", "U")
+                                            addr = str(nome9)
+                                            print(addr)                                            
                                 else:
                                     print("\nDigite o CEP corretamente!\n\n")
                                     time.sleep(2)
@@ -1168,12 +1199,36 @@ def home():
                                                             "\nCEP não localizado! Digite endereço do local atual do atendimento: "
                                                         )
                                                     ).upper()
+                                                    addr = str(end)
+                                                    nome = addr.replace("Ç", "C")
+                                                    nome2 = nome.replace("Á", "A")
+                                                    nome3 = nome2.replace("Ã", "A")
+                                                    nome4 = nome3.replace("É", "E")
+                                                    nome5 = nome4.replace("È", "E")
+                                                    nome6 = nome5.replace("À", "A")
+                                                    nome7 = nome6.replace("Í", "I")
+                                                    nome8 = nome7.replace("Ô", "O")
+                                                    nome9 = nome8.replace("Ú", "U")
+                                                    addr = str(nome9)
+                                                    print(addr)
                                                 elif rede is False:
                                                     addr = str(
                                                         input(
-                                                            "\nServidor indisponível. Digite endereço do local atual do atendimento: "
+                                                            "\nServidor dos correios indisponível (sem internet). Digite endereço do local atual do atendimento: "
                                                         )
                                                     ).upper()
+                                                    addr = str(end)
+                                                    nome = addr.replace("Ç", "C")
+                                                    nome2 = nome.replace("Á", "A")
+                                                    nome3 = nome2.replace("Ã", "A")
+                                                    nome4 = nome3.replace("É", "E")
+                                                    nome5 = nome4.replace("È", "E")
+                                                    nome6 = nome5.replace("À", "A")
+                                                    nome7 = nome6.replace("Í", "I")
+                                                    nome8 = nome7.replace("Ô", "O")
+                                                    nome9 = nome8.replace("Ú", "U")
+                                                    addr = str(nome9)
+                                                    print(addr)
                                         else:
                                             print(
                                                 "\nDigite o CEP corretamente!")
@@ -11458,7 +11513,6 @@ def only():
                             with open('registro_acupuntura.csv', 'a', encoding='UTF8', newline='',) as f:
                                 writer = csv.writer(f)
                                 writer.writerow(data)
-
                             with open('ailog.csv', 'a', encoding='UTF8', newline='') as f:
                                 for i in range(int(len(ldx))):
                                     writer = csv.writer(f)
@@ -11758,28 +11812,8 @@ def gerar_arquivos():
                 break
             else:
                 cls()
-                print("\n\n\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
-                print('[             ]\n\n\n\n\n')
-                time.sleep(1)
-                cls()
-                print("\n\n\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
-                print('[==           ]\n\n\n\n\n')
-                time.sleep(0.2)
-                cls()
-                print("\n\n\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
-                print('[======       ]\n\n\n\n\n')
-                time.sleep(0.4)
-                cls()
-                print("\n\n\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
-                print('[===========  ]\n\n\n\n\n')
-                time.sleep(0.1)
-                cls()
-                print("\n\n\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
-                print('[=============]\n\n\n\n\n')
-                time.sleep(1)
-                cls()
-                print("\n\n")
-                time.sleep(0.5)
+                print("\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
+                print('[             ]\n')
                 if os.path.exists("registro_acupuntura.csv") == False:
                     # ARQUIVO DE REGISTRO GERAL DE PACIENTES
                     print("Criando arquivo de log registro_acupuntura.csv...".upper())
@@ -11806,6 +11840,10 @@ def gerar_arquivos():
                     with open("registro_acupuntura.csv", "w", encoding="UTF8", newline="") as f:
                         writer = csv.writer(f)
                         writer.writerow(header)
+                time.sleep(1)
+                cls()
+                print("\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
+                print('[==           ]\n')
                 if os.path.exists("ailog.csv") == False:
                     # ARQUIVO PARA IMPLEMENTAÇÃO DE ALGORÍTMO DE ANÁLISE IA
                     print("Criando arquivo de log ailog.csv...".upper())
@@ -11815,7 +11853,11 @@ def gerar_arquivos():
                               'SOMA DOS QUADRADOS DE DIAGNÓSTICO(S)', 'SOMA DE DIAGNÓSTICO(S)', 'PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S)', 'PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S)']
                     with open("ailog.csv", "w", encoding="UTF8", newline="") as f:
                         writer = csv.writer(f)
-                        writer.writerow(header)
+                        writer.writerow(header)                
+                time.sleep(0.2)
+                cls()
+                print("\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
+                print('[======       ]\n')
                 if os.path.exists("prontuario.csv") == False:
                     # ARQUIVAMENTO DE PRONTUÁRIO
                     print("Criando arquivo de log prontuario.csv...".upper())
@@ -11830,7 +11872,11 @@ def gerar_arquivos():
                     ]
                     with open("prontuario.csv", "w", encoding="UTF8", newline="") as f:
                         writer = csv.writer(f)
-                        writer.writerow(header)
+                        writer.writerow(header)                
+                time.sleep(0.4)
+                cls()
+                print("\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
+                print('[===========  ]\n')
                 if os.path.exists("cadastro.csv") == False:
                     # ARQUIVO PARA DADOS QUE SE PERDEM CASO PRESCRIÇÃO NÃO FINALIZE
                     print("Criando arquivo de cadastro.csv...".upper())
@@ -11843,7 +11889,15 @@ def gerar_arquivos():
                         writer.writerow(header)
                 print("\n\nPROCESSO FINALIZADO COM SUCESSO! RETORNANDO AO MENU...")
                 time.sleep(2)
-                break
+                break                
+                time.sleep(0.1)
+                cls()
+                print("\n\n\n\n☁  PROCESSANDO UPLOAD VIA CÓDIGO\n\n")
+                print('[=============]\n')
+                time.sleep(1)
+                cls()
+                print("\n\n\n\nSUCESSO!")
+                time.sleep(0.5)
         except:
             continue
 
@@ -13956,6 +14010,4 @@ def conexão():
                     'FALHA DE TESTAGEM DE CONEXÃO POR MÚLTIPLOS MÉTODOS!')
                 rede = False
                 home()
-
-
 conexão()

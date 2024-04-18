@@ -455,7 +455,6 @@ def home():
                 except:
                     pass
                 print("▼ G " + shu_agora + "\n▲ W " + shu_previo)
-                print()
                 if len(warn_pun) != 0:
                     for i in sorted(list(warn_pun)):
                         print(i)
@@ -464,8 +463,7 @@ def home():
                 shu("")
                 if shu_h <= 19 and shu_h >= 16:
                     warn_pun.add(
-                        "⚠ VERIFICAR NEBULOSIDADE, EM BREVE, POSSÍVEL LUA OCULTA"
-                    )
+                        "⚠ VERIFICAR NEBULOSIDADE, EM BREVE, POSSÍVEL LUA OCULTA")
                 print()
                 if len(warn_pun) != 0:
                     for i in sorted(list(warn_pun)):
@@ -542,7 +540,7 @@ def home():
                         print("\n\n\n")
                         expli("")
                         qqu = input(
-                            "\n\n\n⚝ MODO COMPLETO (C) OU ⛾ RÁPIDO (R)? ").upper()
+                            "\n\n⚝  MODO COMPLETO (C) OU RÁPIDO (R)? \n\n⏱ ⏵ ").upper()
                         if qqu == "C":
                             global quick
                             quick = False
@@ -1389,179 +1387,163 @@ def fixar_loc():
 
 
 def ler():
-    cls()
-    print('\n\n\n\n✔ PRONTUÁRIO ARQUIVADO!')
-    time.sleep(1.5)
-    cls()
-    df = pd.read_csv("registro_acupuntura.csv")
-    d3 = df.loc[df["CPF"].isin(["'" + str(cpf) + "'"])]
-    if df.loc[df["CPF"].isin(["'" + str(cpf) + "'"])].empty:
-        print("\n\n\n\n\n\n\nNenhum prontuário identificado para o CPF!")
+    print('\n\n\n\n\n\n\n\n\n\n\n')
+    df = pd.read_csv('registro_acupuntura.csv')
+    d3 = df.loc[df['CPF'].isin(["'"+str(cpf)+"'"])]
+    if df.loc[df['CPF'].isin(["'"+str(cpf)+"'"])].empty:
+        print('\n\n\n\n\n\n\nNenhum prontuário identificado para o CPF!')
         time.sleep(8)
     else:
-        total = int(len(d3["CPF"].values))
-        a = str(d3["PRESCRIÇÃO ACUPUNTURA"].values[total - 1])
-        b = str(d3["DATA DE EMISSÃO"].values[total - 1])
-        c = str(d3["NOME"].values[total - 1])
-        d = str(d3["DIAGNÓSTICOS"].values[total - 1]).upper()
-        e = str(d3["RECOMENDAÇÕES DE TRATAMENTO"].values[total - 1])
-        f = str(d3["MÉTODO"].values[total - 1])
+        total = int(len(d3['CPF'].values))
+        a = str(d3['PRESCRIÇÃO ACUPUNTURA'].values[total-1])
+        b = str(d3['DATA DE EMISSÃO'].values[total-1])
+        c = str(d3['NOME'].values[total-1])
+        d = str(d3['DIAGNÓSTICOS'].values[total-1]).upper()
+        e = str(d3['RECOMENDAÇÕES DE TRATAMENTO'].values[total-1])
+        f = str(d3['MÉTODO'].values[total-1])
         cls()
-        print(f"\n\n♻  LEITURA DE PRESCRIÇÃO | {b} - {c}")
-        print("TRATAMENTO(S): " + d + "\n")
+        print(f'\n\n♻  LEITURA DE PRESCRIÇÃO | {b} - {c}')
+        print('TRATAMENTO(S): '+d+'\n')
         if len(a) == 0:
-            print("ÚLTIMA ANÁLISE NÃO HOUVE PRESCRIÇÃO...")
+            print('ÚLTIMA ANÁLISE NÃO HOUVE PRESCRIÇÃO...')
         else:
-            m = a.split(", ")
+            m = a.split(', ')
             t = int(len(m))
             for i in range(t):
                 pool3.add(m[i])
-            m = e.split(", ")
+            m = e.split(', ')
             t = int(len(m))
             for i in range(t):
                 warn_pun.add(m[i])
-            m = f.split(", ")
+            m = f.split(', ')
             t = int(len(m))
             for i in range(t):
                 questionario.add(m[i])
-            print(f"PRESCRIÇÃO COMPLETA: {str(limpar(pool3)).upper()}.\n\n")
+            print(f'PRESCRIÇÃO COMPLETA: {str(limpar(pool3)).upper()}.\n\n')
             acu = [i[1:] for i in pool3]
             global acu2
             acu2 = sorted(acu)
-            p = [item for item in pool3 if "P" in item[1] and not "C" in item[2]]
+            p = [item for item in pool3 if 'P' in item[1] and not 'C' in item[2]]
             if len(p) != 0:
-                print("☷☰ TAIYIN DA MÃO - FEI (PULMÃO): ", end="")
+                print('☷☰ TAIYIN DA MÃO - FEI (PULMÃO): ', end='')
                 print(limpar(sorted(p, key=lambda s: s[-1:])))
-            ig = [item for item in pool3 if "I" in item[1] and "G" in item[2]]
+            ig = [item for item in pool3 if 'I' in item[1] and 'G' in item[2]]
             if len(ig) != 0:
-                print("☲☰ YANGMING DA MÃO - DACHANG (INTESTINO GROSSO): ", end="")
+                print('☲☰ YANGMING DA MÃO - DACHANG (INTESTINO GROSSO): ', end='')
                 print(limpar(sorted(ig, key=lambda s: s[-1:])))
-            bp = [item for item in pool3 if "B" in item[1] and "P" in item[2]]
+            bp = [item for item in pool3 if 'B' in item[1] and 'P' in item[2]]
             if len(bp) != 0:
-                print("☷☷ TAIYIN DO PÉ - PI (BAÇO): ", end="")
+                print('☷☷ TAIYIN DO PÉ - PI (BAÇO): ', end='')
                 print(limpar(sorted(bp, key=lambda s: s[-1:])))
-            e = [item for item in pool3 if "E" in item[1] and not "X" in item[2]]
+            e = [item for item in pool3 if 'E' in item[1] and not 'X' in item[2]]
             if len(e) != 0:
-                print("☲☷ YANGMING DO PÉ - WEI (ESTÔMAGO): ", end="")
+                print('☲☷ YANGMING DO PÉ - WEI (ESTÔMAGO): ', end='')
                 print(limpar(sorted(e, key=lambda s: s[-1:])))
-            pc = [item for item in pool3 if "PC" in item[1:]]
+            pc = [item for item in pool3 if 'PC' in item[1:]]
             if len(pc) != 0:
-                print("☴☰ JUEYIN DA MÃO - XINBAO (PERICÁRDIO): ", end="")
+                print('☴☰ JUEYIN DA MÃO - XINBAO (PERICÁRDIO): ', end='')
                 print(limpar(sorted(pc, key=lambda s: s[-1:])))
-            ta = [item for item in pool3 if "T" in item[1] and "A" in item[2]]
+            ta = [item for item in pool3 if 'T' in item[1] and 'A' in item[2]]
             if len(ta) != 0:
-                print("☳☰ SHAOYIN DA MÃO - SANJIAO (TRIPLO AQUECEDOR): ", end="")
+                print('☳☰ SHAOYIN DA MÃO - SANJIAO (TRIPLO AQUECEDOR): ', end='')
                 print(limpar(sorted(ta, key=lambda s: s[-1:])))
-            c = [item for item in pool3 if "C" in item[1]]
+            c = [item for item in pool3 if 'C' in item[1]]
             if len(c) != 0:
-                print("☵☰ SHAOYIN DA MÃO - XIN (CORAÇÃO): ", end="")
+                print('☵☰ SHAOYIN DA MÃO - XIN (CORAÇÃO): ', end='')
                 print(limpar(sorted(c, key=lambda s: s[-1:])))
-            id = [item for item in pool3 if "I" in item[1] and "D" in item[2]]
+            id = [item for item in pool3 if 'I' in item[1] and 'D' in item[2]]
             if len(id) != 0:
-                print("☰☰ TAIYANG DA MÃO - XIAOXANG (INTESTINO DELGADO): ", end="")
+                print('☰☰ TAIYANG DA MÃO - XIAOXANG (INTESTINO DELGADO): ', end='')
                 print(limpar(sorted(id, key=lambda s: s[-1:])))
-            f = [item for item in pool3 if "F" in item[1]]
+            f = [item for item in pool3 if 'F' in item[1]]
             if len(f) != 0:
-                print("☴☷ JUEYIN DO PÉ - GAN (FÍGADO): ", end="")
+                print('☴☷ JUEYIN DO PÉ - GAN (FÍGADO): ', end='')
                 print(limpar(sorted(f, key=lambda s: s[-1:])))
-            vb = [item for item in pool3 if "V" in item[1] and "B" in item[2]]
+            vb = [item for item in pool3 if 'V' in item[1] and 'B' in item[2]]
             if len(vb) != 0:
-                print("☳☷ SHAOYANG DO PÉ - DAN (VESÍCULA BILIAR): ", end="")
+                print('☳☷ SHAOYANG DO PÉ - DAN (VESÍCULA BILIAR): ', end='')
                 print(limpar(sorted(vb, key=lambda s: s[-1:])))
-            r = [item for item in pool3 if "R" in item[1:]]
+            r = [item for item in pool3 if 'R' in item[1:]]
             if len(r) != 0:
-                print("☵☷ SHAOYIN DO PÉ - SHEN (RIM): ", end="")
+                print('☵☷ SHAOYIN DO PÉ - SHEN (RIM): ', end='')
                 print(limpar(sorted(r, key=lambda s: s[-1:])))
-            b = [item for item in pool3 if "B" in item[1] and not "P" in item[2]]
+            b = [item for item in pool3 if 'B' in item[1] and not 'P' in item[2]]
             if len(b) != 0:
-                print("☰☷ TAIYANG DO PÉ - PANGGUAN (BEXIGA): ", end="")
+                print('☰☷ TAIYANG DO PÉ - PANGGUAN (BEXIGA): ', end='')
                 print(limpar(sorted(b, key=lambda s: s[-1:])))
-            vc = [item for item in pool3 if "V" in item[1] and "C" in item[2]]
+            vc = [item for item in pool3 if 'V' in item[1] and 'C' in item[2]]
             if len(vc) != 0:
-                print("☷ REN MAI (VASOCONCEPÇÃO): ", end="")
+                print('☷ REN MAI (VASOCONCEPÇÃO): ', end='')
                 print(limpar(sorted(vc, key=lambda s: s[-1:])))
-            vg = [item for item in pool3 if "V" in item[1] and "G" in item[2]]
+            vg = [item for item in pool3 if 'V' in item[1] and 'G' in item[2]]
             if len(vg) != 0:
-                print("☰ DU MAI (VASOGOVERNADOR): ", end="")
+                print('☰ DU MAI (VASOGOVERNADOR): ', end='')
                 print(limpar(sorted(vg, key=lambda s: s[-1:])))
-            mox = [item for item in pool3 if "H" in item]
-            mox2 = [item for item in pool3 if "X" in item[0]]
+            mox = [item for item in pool3 if 'H' in item]
+            mox2 = [item for item in pool3 if 'X' in item[0]]
             if len(mox) != 0 or len(mox2) != 0:
-                print("\nPONTOS COM MOXA:")
+                print('\nPONTOS COM MOXA:')
                 if len(mox) != 0:
                     print(sorted(mox))
                 if len(mox2) != 0:
                     print(sorted(mox2))
-            neu = [item[1:] for item in pool3 if "Z" in item]
+            neu = [item[1:] for item in pool3 if 'Z' in item]
             if len(neu) != 0:
-                print("\nPONTOS NEUTROS:")
+                print('\nPONTOS NEUTROS:')
                 print(sorted(neu))
-            ven = [item[1:] for item in pool3 if "Y" in item]
+            ven = [item[1:] for item in pool3 if 'Y' in item]
             if len(ven) != 0:
-                print("\nPONTOS COM VENTOSA:")
+                print('\nPONTOS COM VENTOSA:')
                 print(sorted(ven))
-            san = [item[1:] for item in pool3 if "K" in item]
+            san = [item[1:] for item in pool3 if 'K' in item]
             if len(san) != 0:
-                print("\nPONTOS COM SANGRIA:")
+                print('\nPONTOS COM SANGRIA:')
                 print(sorted(san))
-            dir = [item for item in pool3 if "M" in item[0]]
-            dir2 = [item for item in pool3 if "A" in item[0]]
+            dir = [item for item in pool3 if 'M' in item[0]]
+            dir2 = [item for item in pool3 if 'A' in item[0]]
             if len(dir) != 0 or len(dir2) != 0:
-                print("\nPONTOS UNILATERAIS DIREITA:")
+                print('\nPONTOS UNILATERAIS DIREITA:')
                 if len(dir) != 0 and len(dir2) != 0:
-                    print(sorted(dir), end="")
+                    print(sorted(dir), end='')
                     print(sorted(dir2))
                 elif len(dir) != 0:
                     print(sorted(dir))
                 elif len(dir2) != 0:
                     print(sorted(dir2))
-            esq = [item for item in pool3 if "D" in item[0]]
-            esq2 = [item for item in pool3 if "N" in item[0]]
+            esq = [item for item in pool3 if 'D' in item[0]]
+            esq2 = [item for item in pool3 if 'N' in item[0]]
             if len(esq) != 0 or len(esq2) != 0:
-                print("\nPONTOS UNILATERAIS ESQUERDA:")
+                print('\nPONTOS UNILATERAIS ESQUERDA:')
                 if len(esq) != 0 and len(esq2) != 0:
-                    print(sorted(esq), end="")
+                    print(sorted(esq), end='')
                     print(sorted(esq2))
                 elif len(esq) != 0:
                     print(sorted(esq))
                 elif len(esq2) != 0:
                     print(sorted(esq2))
-            extra = [item for item in pool3 if "E" in item[1] and "X" in item[2]]
+            extra = [item for item in pool3 if 'E' in item[1] and 'X' in item[2]]
             if len(extra) != 0:
-                print("\n🛈 PONTOS EXTRAMERIDIANOS:")
+                print('\n🛈 PONTOS EXTRAMERIDIANOS:')
                 l = [i[1:] for i in extra]
                 l2 = {}
                 for i in l:
                     if i in locex:
                         l2.update({i: locex[i]})
                 for k, v in sorted(l2.items(), key=lambda x: x[1], reverse=True):
-                    print(k, "- ", v)
-            u = [
-                item[1:]
-                for item in pool3
-                if "GEX" in item
-                or "HEX" in item
-                or "WEX" in item
-                or "XEX" in item
-                or "YEX" in item
-                or "ZEX" in item
-                or "KEX" in item
-                or "MEX" in item
-                or "NEX" in item
-                or "AEX" in item
-                or "DEX" in item
-            ]  # funcionando, seleciona os extras
+                    print(k, '- ', v)
+            # funcionando, seleciona os extras
+            u = [item[1:] for item in pool3 if 'GEX' in item or 'HEX' in item or 'WEX' in item or 'XEX' in item or 'YEX' in item or 'ZEX' in item or 'KEX' in item or 'MEX' in item or 'NEX' in item or 'AEX' in item or 'DEX' in item]
             # funcionando, seleciona todos p set
             v = [item[1:] for item in pool3]
             u_setado = set(u)
             v_setado = set(v)
             # teste, contagem de todos exceto extras
             c = v_setado.difference(u_setado)
-            agu = 2 * len(c)
-            agu_vc = len([item for item in pool3 if "VC" in item])
+            agu = 2*len(c)
+            agu_vc = len([item for item in pool3 if 'VC' in item])
             if agu_vc != 0:
                 agu -= agu_vc
-            agu_vg = len([item for item in pool3 if "VG" in item])
+            agu_vg = len([item for item in pool3 if 'VG' in item])
             if agu_vg != 0:
                 agu -= agu_vg
             if len(dir) != 0:
@@ -1569,167 +1551,40 @@ def ler():
             if len(esq) != 0:
                 agu -= len(esq)
             if len(u) != 0:
-                agu_ext = {
-                    "EX1": 4,
-                    "EX2": 2,
-                    "EX3": 2,
-                    "EX4": 1,
-                    "EX5": 1,
-                    "EX6": 1,
-                    "EX7": 2,
-                    "EX8": 2,
-                    "EX9": 2,
-                    "EX10": 2,
-                    "EX11": 2,
-                    "EX12": 2,
-                    "EX13": 2,
-                    "EX14": 2,
-                    "EX15": 2,
-                    "EX16": 2,
-                    "EX17": 2,
-                    "EX18": 2,
-                    "EX19": 2,
-                    "EX20": 2,
-                    "EX21": 2,
-                    "EX22": 2,
-                    "EX23": 1,
-                    "EX24": 2,
-                    "EX25": 2,
-                    "EX26": 2,
-                    "EX27": 2,
-                    "EX28": 1,
-                    "EX29": 2,
-                    "EX30": 2,
-                    "EX31": 2,
-                    "EX32": 2,
-                    "EX33": 2,
-                    "EX34": 2,
-                    "EX35": 2,
-                    "EX36": 5,
-                    "EX37": 2,
-                    "EX38": 2,
-                    "EX39": 2,
-                    "EX40": 2,
-                    "EX41": 2,
-                    "EX42": 2,
-                    "EX43": 2,
-                    "EX44": 2,
-                    "EX45": 2,
-                    "EX46": 2,
-                    "EX47": 2,
-                    "EX48": 2,
-                    "EX49": 2,
-                    "EX50": 2,
-                    "EX51": 8,
-                    "EX52": 2,
-                    "EX53": 1,
-                    "EX54": 2,
-                    "EX55": 2,
-                    "EX56": 2,
-                    "EX57": 2,
-                    "EX58": 2,
-                    "EX59": 2,
-                    "EX60": 2,
-                    "EX61": 1,
-                    "EX62": 2,
-                    "EX63": 2,
-                    "EX64": 2,
-                    "EX65": 2,
-                    "EX66": 2,
-                    "EX67": 1,
-                    "EX68": 2,
-                    "EX69": 2,
-                    "EX70": 34,
-                    "EX71": 2,
-                    "EX72": 1,
-                    "EX73": 10,
-                    "EX74": 2,
-                    "EX75": 8,
-                    "EX76": 2,
-                    "EX77": 4,
-                    "EX78": 2,
-                    "EX79": 2,
-                    "EX80": 2,
-                    "EX81": 8,
-                    "EX82": 4,
-                    "EX83": 2,
-                    "EX84": 4,
-                    "EX85": 2,
-                    "EX86": 4,
-                    "EX87": 2,
-                    "EX88": 2,
-                    "EX89": 6,
-                    "EX90": 2,
-                    "EX91": 2,
-                    "EX92": 2,
-                    "EX93": 2,
-                    "EX94": 2,
-                    "EX95": 2,
-                    "EX96": 8,
-                    "EX97": 2,
-                    "EX98": 2,
-                    "EX99": 2,
-                    "EX100": 2,
-                    "EX101": 2,
-                    "EX102": 2,
-                    "EX103": 2,
-                    "EX104": 2,
-                    "EX105": 2,
-                    "EX106": 2,
-                    "EX107": 2,
-                    "EX108": 2,
-                    "EX109": 2,
-                    "EX110": 2,
-                    "EX111": 2,
-                    "EX112": 2,
-                    "EX113": 2,
-                    "EX114": 2,
-                    "EX115": 2,
-                    "EX116": 2,
-                    "EX117": 2,
-                    "EX118": 2,
-                    "EX119": 2,
-                    "EX120": 2,
-                    "EX121": 2,
-                    "EX122": 2,
-                    "EX123": 2,
-                    "EX124": 2,
-                    "EX125": 2,
-                    "EX126": 2,
-                    "EX127": 2,
-                }
+                agu_ext = {'EX1': 4, 'EX2': 2, 'EX3': 2, 'EX4': 1, 'EX5': 1, 'EX6': 1, 'EX7': 2, 'EX8': 2, 'EX9': 2, 'EX10': 2, 'EX11': 2, 'EX12': 2, 'EX13': 2, 'EX14': 2, 'EX15': 2, 'EX16': 2, 'EX17': 2, 'EX18': 2, 'EX19': 2, 'EX20': 2, 'EX21': 2, 'EX22': 2, 'EX23': 1, 'EX24': 2, 'EX25': 2, 'EX26': 2, 'EX27': 2, 'EX28': 1, 'EX29': 2, 'EX30': 2, 'EX31': 2, 'EX32': 2, 'EX33': 2, 'EX34': 2, 'EX35': 2, 'EX36': 5, 'EX37': 2, 'EX38': 2, 'EX39': 2, 'EX40': 2, 'EX41': 2, 'EX42': 2, 'EX43': 2, 'EX44': 2, 'EX45': 2, 'EX46': 2, 'EX47': 2, 'EX48': 2, 'EX49': 2, 'EX50': 2, 'EX51': 8, 'EX52': 2, 'EX53': 1, 'EX54': 2, 'EX55': 2, 'EX56': 2, 'EX57': 2, 'EX58': 2, 'EX59': 2, 'EX60': 2, 'EX61': 1, 'EX62': 2, 'EX63': 2, 'EX64': 2, 'EX65': 2,
+                           'EX66': 2, 'EX67': 1, 'EX68': 2, 'EX69': 2, 'EX70': 34, 'EX71': 2, 'EX72': 1, 'EX73': 10, 'EX74': 2, 'EX75': 8, 'EX76': 2, 'EX77': 4, 'EX78': 2, 'EX79': 2, 'EX80': 2, 'EX81': 8, 'EX82': 4, 'EX83': 2, 'EX84': 4, 'EX85': 2, 'EX86': 4, 'EX87': 2, 'EX88': 2, 'EX89': 6, 'EX90': 2, 'EX91': 2, 'EX92': 2, 'EX93': 2, 'EX94': 2, 'EX95': 2, 'EX96': 8, 'EX97': 2, 'EX98': 2, 'EX99': 2, 'EX100': 2, 'EX101': 2, 'EX102': 2, 'EX103': 2, 'EX104': 2, 'EX105': 2, 'EX106': 2, 'EX107': 2, 'EX108': 2, 'EX109': 2, 'EX110': 2, 'EX111': 2, 'EX112': 2, 'EX113': 2, 'EX114': 2, 'EX115': 2, 'EX116': 2, 'EX117': 2, 'EX118': 2, 'EX119': 2, 'EX120': 2, 'EX121': 2, 'EX122': 2, 'EX123': 2, 'EX124': 2, 'EX125': 2, 'EX126': 2, 'EX127': 2}
                 for i in u:
                     if i in agu_ext:
                         agu += agu_ext[i]
-            print(f"\nTOTAL DE PONTOS: {len(pool3)}.")
-            print(f"TOTAL DE AGULHAS: {agu}.")
-            a = agu / 10
-            print(f"TOTAL DE PACOTES: {round(a+0.5)}.")
-            bk1 = {item for item in pool3 if "ID9" in item}
-            bk2 = {item for item in pool3 if "ID10" in item}
+            print(f'\nTOTAL DE PONTOS: {len(pool3)}.')
+            print(f'TOTAL DE AGULHAS: {agu}.')
+            a = agu/10
+            print(f'TOTAL DE PACOTES: {round(a+0.5)}.')
+            bk1 = {item for item in pool3 if 'ID9' in item}
+            bk2 = {item for item in pool3 if 'ID10' in item}
             u1 = bk1.union(bk2)
-            bk3 = {item for item in pool3 if "ID11" in item}
+            bk3 = {item for item in pool3 if 'ID11' in item}
             u2 = u1.union(bk3)
-            bk4 = {item for item in pool3 if "ID12" in item}
+            bk4 = {item for item in pool3 if 'ID12' in item}
             u3 = u2.union(bk4)
-            bk5 = {item for item in pool3 if "ID13" in item}
+            bk5 = {item for item in pool3 if 'ID13' in item}
             u4 = u3.union(bk5)
-            bk6 = {item for item in pool3 if "ID14" in item}
+            bk6 = {item for item in pool3 if 'ID14' in item}
             u5 = u4.union(bk6)
-            bk7 = {item for item in pool3 if "ID15" in item}
+            bk7 = {item for item in pool3 if 'ID15' in item}
             u6 = u5.union(bk7)
-            bk8 = {item for item in pool3 if "VB30" in item}
+            bk8 = {item for item in pool3 if 'VB30' in item}
             u7 = u6.union(bk8)
-            bk9 = {item for item in pool3 if "VB19" in item}
+            bk9 = {item for item in pool3 if 'VB19' in item}
             u8 = u7.union(bk9)
-            bk10 = {item for item in pool3 if "VB20" in item}
+            bk10 = {item for item in pool3 if 'VB20' in item}
             u9 = u8.union(bk10)
-            bk11 = {item for item in pool3 if "VG" in item}
+            bk11 = {item for item in pool3 if 'VG' in item}
             u10 = u9.union(bk11)
             u10 = list(u10)
             u10 = [item[1:] for item in u10]
             cob = [item[1:]
-                   for item in pool3 if "B" in item[1] and not "P" in item[2]]
+                   for item in pool3 if 'B' in item[1] and not 'P' in item[2]]
             if len(cob) > 0 and len(u10) > 0:
                 s1 = set(cob)
                 s2 = set(u10)
@@ -1738,106 +1593,102 @@ def ler():
 
                 def mec(x):
                     conca.remove(x)
-
-                if "B1" in conca:
-                    mec("B1")
-                if "B2" in conca:
-                    mec("B2")
-                if "B3" in conca:
-                    mec("B3")
-                if "B4" in conca:
-                    mec("B4")
-                if "B5" in conca:
-                    mec("B5")
-                if "B6" in conca:
-                    mec("B6")
-                if "B7" in conca:
-                    mec("B7")
-                if "B8" in conca:
-                    mec("B8")
-                if "B58" in conca:
-                    mec("B58")
-                if "B59" in conca:
-                    mec("B59")
-                if "B60" in conca:
-                    mec("B60")
-                if "B61" in conca:
-                    mec("B61")
-                if "B62" in conca:
-                    mec("B62")
-                if "B63" in conca:
-                    mec("B63")
-                if "B64" in conca:
-                    mec("B64")
-                if "B65" in conca:
-                    mec("B65")
-                if "B66" in conca:
-                    mec("B66")
-                if "B67" in conca:
-                    mec("B67")
-                print("NECESSÁRIO APLICAR EM DORSAL DE PACIENTE EM: ", end="")
+                if 'B1' in conca:
+                    mec('B1')
+                if 'B2' in conca:
+                    mec('B2')
+                if 'B3' in conca:
+                    mec('B3')
+                if 'B4' in conca:
+                    mec('B4')
+                if 'B5' in conca:
+                    mec('B5')
+                if 'B6' in conca:
+                    mec('B6')
+                if 'B7' in conca:
+                    mec('B7')
+                if 'B8' in conca:
+                    mec('B8')
+                if 'B58' in conca:
+                    mec('B58')
+                if 'B59' in conca:
+                    mec('B59')
+                if 'B60' in conca:
+                    mec('B60')
+                if 'B61' in conca:
+                    mec('B61')
+                if 'B62' in conca:
+                    mec('B62')
+                if 'B63' in conca:
+                    mec('B63')
+                if 'B64' in conca:
+                    mec('B64')
+                if 'B65' in conca:
+                    mec('B65')
+                if 'B66' in conca:
+                    mec('B66')
+                if 'B67' in conca:
+                    mec('B67')
+                print('NECESSÁRIO APLICAR EM DORSAL DE PACIENTE EM: ', end='')
                 print(limpar(sorted(list(conca))))
             elif len(cob) > 0 and len(u10) == 0:
                 conca = list(cob)
 
                 def mec(x):
                     conca.remove(x)
-
-                if "B1" in conca:
-                    mec("B1")
-                if "B2" in conca:
-                    mec("B2")
-                if "B3" in conca:
-                    mec("B3")
-                if "B4" in conca:
-                    mec("B4")
-                if "B5" in conca:
-                    mec("B5")
-                if "B6" in conca:
-                    mec("B6")
-                if "B7" in conca:
-                    mec("B7")
-                if "B8" in conca:
-                    mec("B8")
-                if "B58" in conca:
-                    mec("B58")
-                if "B59" in conca:
-                    mec("B59")
-                if "B60" in conca:
-                    mec("B60")
-                if "B61" in conca:
-                    mec("B61")
-                if "B62" in conca:
-                    mec("B62")
-                if "B63" in conca:
-                    mec("B63")
-                if "B64" in conca:
-                    mec("B64")
-                if "B65" in conca:
-                    mec("B65")
-                if "B66" in conca:
-                    mec("B66")
-                if "B67" in conca:
-                    mec("B67")
-                print("NECESSÁRIO APLICAR EM DORSAL DE PACIENTE EM: ", end="")
+                if 'B1' in conca:
+                    mec('B1')
+                if 'B2' in conca:
+                    mec('B2')
+                if 'B3' in conca:
+                    mec('B3')
+                if 'B4' in conca:
+                    mec('B4')
+                if 'B5' in conca:
+                    mec('B5')
+                if 'B6' in conca:
+                    mec('B6')
+                if 'B7' in conca:
+                    mec('B7')
+                if 'B8' in conca:
+                    mec('B8')
+                if 'B58' in conca:
+                    mec('B58')
+                if 'B59' in conca:
+                    mec('B59')
+                if 'B60' in conca:
+                    mec('B60')
+                if 'B61' in conca:
+                    mec('B61')
+                if 'B62' in conca:
+                    mec('B62')
+                if 'B63' in conca:
+                    mec('B63')
+                if 'B64' in conca:
+                    mec('B64')
+                if 'B65' in conca:
+                    mec('B65')
+                if 'B66' in conca:
+                    mec('B66')
+                if 'B67' in conca:
+                    mec('B67')
+                print('NECESSÁRIO APLICAR EM DORSAL DE PACIENTE EM: ', end='')
                 print(limpar(sorted(list(conca))))
             elif int(len(u10)) > 0 and len(cob) == 0:
-                print("NECESSÁRIO APLICAR EM DORSAL DE PACIENTE EM: ", end="")
+                print('NECESSÁRIO APLICAR EM DORSAL DE PACIENTE EM: ', end='')
                 print(limpar(sorted(list(u10))))
             else:
-                print("NÃO HÁ PONTOS EM DORSAL")
+                print('NÃO HÁ PONTOS EM DORSAL')
             if len(warn_pun) > 1:
-                print("\nRECOMENDAÇÕES DE TRATAMENTO: ")
+                print('\nRECOMENDAÇÕES DE TRATAMENTO: ')
                 for i in sorted(list(warn_pun)):
                     print(i.capitalize())
             if len(questionario) > 1:
-                print("\nMÉTODOS SUGERIDOS:")
+                print('\nMÉTODOS SUGERIDOS:')
                 for i in sorted(list(questionario)):
                     print(i.capitalize())
-            print(
-                "\n\nLEGENDA:\nG: SEDAÇÃO FRIA, H: SEDAÇÃO COM MOXA, W: TONIFICAÇÃO FRIA, X: TONIFICAÇÃO COM MOXA,  || Z: NEUTRO, Y: VENTOSA, K: SANGRIA, \nM: UNILATERAL DIREITA - SEDADO, N: UNILATERAL ESQUERDA - SEDADO, A: UNILATERAL DIREITA - TONIFICADO, D: UNILATERAL ESQUERDA - TONIFICADO"
-            )
-            x = input("\n\n\n")
+            print('\n\nLEGENDA:\nG: SEDAÇÃO FRIA, H: SEDAÇÃO COM MOXA, W: TONIFICAÇÃO FRIA, X: TONIFICAÇÃO COM MOXA,  || Z: NEUTRO, Y: VENTOSA, K: SANGRIA, \nM: UNILATERAL DIREITA - SEDADO, N: UNILATERAL ESQUERDA - SEDADO, A: UNILATERAL DIREITA - TONIFICADO, D: UNILATERAL ESQUERDA - TONIFICADO')
+            x = input('\n\n\n')
             zerar()
 
 
@@ -2507,7 +2358,7 @@ def ben():
             return warn.add("EXAME DE RENYING: " + x)
         while True:
             try:
-                print("\n\nEXAME DE RENYING: ")
+                print("\nEXAME DE RENYING: ")
                 er = input(
                     "\nSE CUNKOU É MAIS FORTE:\nA-CUNKOU=2XRENYING\nB-CUNKOU=3XRENYING\nC-CUNKOU=4XRENYING\n\nSE REYING É MAIS FORTE:\nD-RENYING=2XCUNKOU\nE-RENYING=3XCUNKOU\nF-RENYING=4XCUNKOU\n\nZ-SEM ALTERAÇÕES DESCRITAS\n\n▶ "
                 ).upper()
@@ -2833,14 +2684,11 @@ def ben():
                 print(i)
             x = input("\n\n\nAPERTE QUALQUER TECLA PARA CONTINUAR...")
         # ---------------- PULSOLOGIA - PARTE 1
-        cls()
         while True:
             try:
-                fc = int(
-                    input(
-                        "\n\n\nDigite a frequencia cardíaca (bpm) ou batimentos/incursão completa do examinador: \n\n⏱ ⏵ "
-                    )
-                )
+                cls()
+                fc = int(input(
+                    "\n\n\nDigite a frequencia cardíaca (bpm) ou batimentos/incursão completa do examinador: \n\n❤ ⏵ "))
                 if fc < 10:
                     if fc < 3:
                         rfc = 1
@@ -2869,7 +2717,10 @@ def ben():
                 else:
                     continue
             except ValueError:
-                print("Vamos tentar novamente, valor distoante inserido...")
+                cls()
+                print(
+                    "\n\n\n\n\nVamos tentar novamente, valor distoante inserido...".upper())
+                time.sleep(3)
         if rfc == 1:
             print("\n\n\nPULSO BRADICÁRDICO (LENTO) DETECTADO PARA ANÁLISE!\n\n")
         if rfc == 2:
@@ -2902,8 +2753,8 @@ def ben():
         # -------------------------------------- PULSO P/ IG
         while True:
             try:
-                print('♸ INICIE PULSO DIREITO COM SEQUENCIAIS D1A D1B D1C D2A...')
-                a = str(input('OU APERTE ENTER E SIGA TUTORIAL DE PULSOS... '))
+                print('♸ INICIE SEQUÊNCIA DE PULSO DIREITO (D1A D1B D1C D2A...)')
+                a = str(input('OU, APERTE ENTER E SIGA AO TUTORIAL... \n\n⌕  ⏵ '))
                 if len(a) == 9:
                     global joe
                     joe = True
@@ -3263,8 +3114,8 @@ def ben():
         # -------------------------------------- PULSO C/ ID                                   NÍVEL SUPERFICIAL ESQ
         while True:
             try:
-                print('♸ INICIE PULSO ESQUERDO COM SEQUENCIAIS E1A E1B E1C E2A')
-                a = str(input('OU APERTE ENTER E SIGA TUTORIAL DE PULSOS... '))
+                print('♸ INICIE SEQUÊNCIA DE PULSO ESQUERDO (E1A E1B E1C E2A...)')
+                a = str(input('OU, APERTE ENTER E SIGA AO TUTORIAL... \n\n⌕  ⏵ '))
                 if len(a) == 9:
                     joe = True
                     a.split()
@@ -5988,7 +5839,7 @@ def ben():
             return smt.add(a + " de " + str(b))
 
         a = 0
-
+        print('\n\n\n\n')
         if d3c == 3 and a == 0:
             if "W" or "T" in lin:
                 q1 = input(
@@ -6578,11 +6429,11 @@ def ben():
                 i += 1
             if i > 1:
                 cls()
-                if idd >= 12 and idd < 50:
+                if idd >= 12 and idd < 48:
                     f()
                     cls()
                     print("\n\n\n\n\nCOMPATIBILIDADE DE GRAVIDEZ NO EXAME REALIZADO!")
-                    time.sleep(3)
+                    time.sleep(6)
                 cls()
 
         # -------------------------------------- VERIFICAÇÃO DE DIAGNÓSTICO - PARTE 4
@@ -8520,8 +8371,6 @@ def ben():
             export3 += int(21**2)
 
         # ANÁLISE DE WEN BING E SHANG HAN LUN ABAIXO  ##############################################################################
-        cls()
-        print("\n\n\n\n")
         while True:
             try:
                 # SHANG HAN LUN - TAI YANG
@@ -8751,7 +8600,7 @@ def ben():
                     ).upper()
                     if ne16 == "S":
                         ne17 = input(
-                            "Em dias quentes quando se está atarefado(a) e na correria suando, ocorre diarréia súbida muito forte que some após episódio? (S/N) "
+                            "Em dias agitados, ocorre diarréia única? (S/N) "
                         ).upper()
                         if ne17 == "S":
                             dxconff.add(
@@ -8771,7 +8620,7 @@ def ben():
                     continue
             except:
                 continue
-                # WEN BING XUE - YE TIAN SHI
+                # WEN BING XUE - YE TIAN SHI# WEN BING XUE - YE TIAN SHI
         while True:
             try:
                 # if tipo_p[1] in pool or tipo_p[2] in pool or 'saburra branca'.upper() in pureli:
@@ -8912,11 +8761,13 @@ def ben():
                 elif "sialorréia".upper() not in pureli:
                     dxconff.add(str(dx[263] + " COM " + dx[197]).capitalize())
         cls()
-        expli("")
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print(nome + " ☯  " + horadia)
-        print("\nHDA:")
-        print(hda)
-        print()
+        print("\nHDA: ")
+        if len(hda) > 3:
+            print(hda)
+        else:
+            print('EM BRANCO')
 
         pre = set()
 
@@ -9899,10 +9750,9 @@ def metro():
                 print("RESUMO DE DIAGNÓSTICO:")
                 for i in sorted(coid):
                     print(i)
-            print()
             doc = str(
                 input(
-                    "\n\nConforme lista, insira numeração(ções) referente(s) ao(s) diagnóstico(s):\n\nou, para finalizar digite FIM\nou, digite * para apagar tudo ou *seleção para apagar parcialmente: "
+                    "\nConforme lista, insira numeração(ções) referente(s) ao(s) diagnóstico(s):\n\nou, para finalizar digite FIM\nou, digite * para apagar tudo ou *seleção para apagar parcialmente: "
                 )
             )
             print()
@@ -10961,16 +10811,15 @@ def only():
                 metro()
             else:
                 cls()
-                print(
-                    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-                )
+                print('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
                 expli("")
+                print('')
                 print(nome + " ☯  " + horadia)
-                print("\nDIAGNÓSTICO(S):")
-                print(limpar(seta))
+                print("\nDIAGNÓSTICO(S) PRINCIPAL(IS):")
+                print(str(limpar(seta)).upper())
                 if homm == "A":
-                    print("\nDIAGNÓSTICOS:")
-                    print(dxconff)
+                    print("DIAGNÓSTICO(S) DIFERENCIAL(IS):")
+                    print(str(limpar(dxconff)).upper())
                     print(f"TIPOLOGIA: {str(totpul)}")
                 if len(pool3) == 0:
                     print("\nNÃO HÁ PRESCRIÇÃO AINDA...")
@@ -10988,11 +10837,9 @@ def only():
                     acu2 = sorted(acu)
                     for i, elemento in enumerate(acu2):
                         if elemento in acu2[i + 1:]:
-                            print(f"• SOBREPOSIÇÃO: {elemento}!")
-                    print("\n\n")
-                    p = [
-                        item for item in pool3 if "P" in item[1] and not "C" in item[2]
-                    ]
+                            print(f"⏏ SOBREPOSIÇÃO: {elemento}!")
+                    p = [item for item in pool3 if "P" in item[1]
+                         and not "C" in item[2]]
                     if len(p) != 0:
                         print("\n☷☰ TAIYIN DA MÃO - FEI (PULMÃO):")
                         print(sorted(p, key=lambda s: s[-1:]))
@@ -11424,14 +11271,12 @@ def only():
                         for i in sorted(lembrete):
                             print(i.capitalize())
                     if len(dxcid) != 0:
-                        print('CID-11:')
+                        print('CID-11: ', end='')
                         print(limpar(sorted(list(dxcid))))
                     print(f"\nHORÁRIO PROPÍCIO PARA SEDAR: {shu_agora}")
                     print(f"HORÁRIO PROPÍCIO PARA TONIFICAR: {shu_previo}")
-                print("\n\n")
-                digprepre = input(
-                    "CONSULTE: [0] TOPOGRAFIA DE COLUNA [1] PONTOS YUAN [2] PONTOS ESTRELA DE CÉU [3] PONTOS DE SU SI MIAO [4] PONTOS MU-XI \n[5] PONTOS MU [6] PONTOS SHU DORSAIS [7] PONTOS SHU ANTIGOS [8] PONTOS LUO [9] PONTOS XI [10] PONTOS HUI [11] SHENS \n[12] PONTOS HO [13] PONTOS EXTRAS [14] VENTOSA [15] PONTOS JANELA DE CÉU [16] PRESCRIÇÃO PARA PATOLOGIAS DE MEDICINA OCIDENTAL\n\nPRESCREVER PONTO(S): \nG: SEDAÇÃO FRIA, H: SEDAÇÃO COM MOXA, W: TONIFICAÇÃO FRIA, X: TONIFICAÇÃO COM MOXA,  || Z: NEUTRO, Y: VENTOSA, K: SANGRIA, \nM: UNILATERAL DIREITA - SEDADO, N: UNILATERAL ESQUERDA - SEDADO, A: UNILATERAL DIREITA - TONIFICADO, D: UNILATERAL ESQUERDA - TONIFICADO, \n\n\nDIGITE FIM PARA FINALIZAR O PROCESSO, OU,\n\n\nINSIRA PRESCRIÇÕES OU (*+PONTO) PARA APAGAR UM PONTO, (*) PARA ZERAR PRESCRIÇÃO, (@) PARA ZERAR NOTAS\nPARA APAGAR UM MERIDIANO * + MERIDIANO (IG, P, C...) (PARA EXTRAS USE *T): "
-                )
+                print("\n")
+                digprepre = input("CONSULTE: [0] TOPOGRAFIA DE COLUNA [1] PONTOS YUAN [2] PONTOS ESTRELA DE CÉU [3] PONTOS DE SU SI MIAO [4] PONTOS MU-XI \n[5] PONTOS MU [6] PONTOS SHU DORSAIS [7] PONTOS SHU ANTIGOS [8] PONTOS LUO [9] PONTOS XI [10] PONTOS HUI [11] SHENS \n[12] PONTOS HO [13] PONTOS EXTRAS [14] VENTOSA [15] PONTOS JANELA DE CÉU [16] PRESCRIÇÃO PARA PATOLOGIAS DE MEDICINA OCIDENTAL\n\nPRESCREVER PONTO(S): \nG: SEDAÇÃO FRIA, H: SEDAÇÃO COM MOXA, W: TONIFICAÇÃO FRIA, X: TONIFICAÇÃO COM MOXA,  || Z: NEUTRO, Y: VENTOSA, K: SANGRIA, \nM: UNILATERAL DIREITA - SEDADO, N: UNILATERAL ESQUERDA - SEDADO, A: UNILATERAL DIREITA - TONIFICADO, D: UNILATERAL ESQUERDA - TONIFICADO, \n\nDIGITE FIM PARA FINALIZAR O PROCESSO, OU,\n\n\nINSIRA PRESCRIÇÕES OU (*+PONTO) PARA APAGAR UM PONTO, (*) PARA ZERAR PRESCRIÇÃO, (@) PARA ZERAR NOTAS\nPARA APAGAR UM MERIDIANO * + MERIDIANO (IG, P, C...) (PARA EXTRAS USE *T): ")
                 if digprepre.isnumeric() == True:
                     global pipe
                     pipe = int(digprepre)
@@ -11559,14 +11404,14 @@ def only():
                         if len(questionario) == 0:
                             questionario.add("EM BRANCO")
 
-                        # ARQUIVAMENTO EM DB                       
+                        # ARQUIVAMENTO EM DB
                         cls()
                         print('\n\n\n\nSALVANDO EM BANCO DE DADOS...\n')
                         time.sleep(1)
                         if homm == 'A':
                             data = ["'" + str(cpf) + "'", str(nome), sexo, str(idd), str(expodn), str(pre_especcodcompa_dn), str(horadia), str(addr), str(comfx.upper()), str(
                                 limpar(pureli)), str(totpul), str(str(limpar(seta))+' / '+str(limpar(dxcid))), str(limpar(pool3)), str(limpar(warn_pun)), str(limpar(questionario)),
-                                    ver]
+                                ver]
                             with open('registro_acupuntura.csv', 'a', encoding='UTF8', newline='',) as f:
                                 writer = csv.writer(f)
                                 writer.writerow(data)
@@ -11611,9 +11456,9 @@ def only():
                                 Quantidade de diagnósticos
                                 int(len(seta)) (3 se x x x) (2 se x x) (1 se x) (6 se x x x x x x)
                                 sendo, len a quantidade de diagnósticos x
-                            '''                                           
+                            '''
                             data = [int(export1), int(export2), int(d1a), int(d1b), int(d1c), int(d2a), int(d2b), int(d2c), int(d3a), int(d3b), int(d3c), int(
-                                e1a), int(e1b), int(e1c), int(e2a), int(e2b), int(e2c), int(e3a), int(e3b), int(e3c), int(export3), int(export4), int(export5), int(aix1),0,0,0,0,0]
+                                e1a), int(e1b), int(e1c), int(e2a), int(e2b), int(e2c), int(e3a), int(e3b), int(e3c), int(export3), int(export4), int(export5), int(aix1), 0, 0, 0, 0, 0]
                             with open('ailog.csv', 'a', encoding='UTF8', newline='') as f:
                                 writer = csv.writer(f)
                                 writer.writerow(data)
@@ -11823,12 +11668,13 @@ def gerar_arquivos():
             else:
                 cls()
                 print("\n\n\n\nPROCESSANDO UPLOAD DE LOG VIA CÓDIGO\n\n")
+                time.sleep(1.5)
+                cls()
+                print("\n\n\n\nGERANDO ARQUIVOS DE REGISTRO\n\n")
                 time.sleep(2)
-                print("GERANDO ARQUIVOS DE REGISTRO")
-                time.sleep(3)
                 if os.path.exists("registro_acupuntura.csv") == False:
                     # ARQUIVO DE REGISTRO GERAL DE PACIENTES
-                    print("Criando arquivo de log registro_acupuntura.csv...").upper()
+                    print("Criando arquivo de log registro_acupuntura.csv...".upper())
                     print('ARQUIVO DE REGISTRO GERAL DE PACIENTES\n')
                     time.sleep(1)
                     header = [
@@ -11856,7 +11702,7 @@ def gerar_arquivos():
                     # ARQUIVO PARA IMPLEMENTAÇÃO DE ALGORÍTMO DE ANÁLISE IA
                     '''
                     EXPLICAÇÃO DE BANCO DE DADOS AI
-                    
+
                     RESPECTIVAMENTE PARA BASE DE TREINAMENTOS DE ALGORÍTMOS NOS DADOS ABAIXO:
                     EXPORT1=LÍNGUA (NUMERADA) ELEVADA AO QUADRADO [0]
                     EXPORT2=SEXO E IDADE, SEXO M: IDADE*1, SEXO F: IDADE**2 [1]
@@ -11895,17 +11741,18 @@ def gerar_arquivos():
                         Quantidade de diagnósticos
                         int(len(seta)) (3 se x x x) (2 se x x) (1 se x) (6 se x x x x x x)
                         sendo, len a quantidade de diagnósticos x
-                    '''                    
-                    print("Criando arquivo de log ailog.csv...").upper()
+                    '''
+                    print("Criando arquivo de log ailog.csv...".upper())
                     print('BASE DE DADOS PARA TREINAMENTO DE ALGORÍTMO DE ANÁLISE IA\n')
-                    time.sleep(1)
-                    header = ['LÍNGUA','SEXO-IDADE','D1A','D1B','D1C','D2A','D2B','D2C','D3A','D3B','D3C','E1A','E1B','E1C','E2A','E2B','E2C','E3A','E3B','E3C','PULSOS','COMPLEIÇÃO','COMPLEIÇÃO RENYING','SOMA DOS QUADRADOS DE DIAGNÓSTICO(S)','SOMA DE DIAGNÓSTICO(S)','PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S)','PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S)','PRODUTO DE DIAGNÓSTICO(S)','QUANTIDADE DE DIAGNÓSTICO(S)']
+                    time.sleep(1.5)
+                    header = ['LÍNGUA', 'SEXO-IDADE', 'D1A', 'D1B', 'D1C', 'D2A', 'D2B', 'D2C', 'D3A', 'D3B', 'D3C', 'E1A', 'E1B', 'E1C', 'E2A', 'E2B', 'E2C', 'E3A', 'E3B', 'E3C', 'PULSOS', 'COMPLEIÇÃO', 'COMPLEIÇÃO RENYING',
+                              'SOMA DOS QUADRADOS DE DIAGNÓSTICO(S)', 'SOMA DE DIAGNÓSTICO(S)', 'PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S)', 'PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S)', 'PRODUTO DE DIAGNÓSTICO(S)', 'QUANTIDADE DE DIAGNÓSTICO(S)']
                     with open("ailog.csv", "w", encoding="UTF8", newline="") as f:
                         writer = csv.writer(f)
-                        writer.writerow(header)                    
+                        writer.writerow(header)
                 if os.path.exists("prontuario.csv") == False:
                     # ARQUIVAMENTO DE PRONTUÁRIO
-                    print("Criando arquivo de log prontuario.csv...").upper()
+                    print("Criando arquivo de log prontuario.csv...".upper())
                     print('ARQUIVAMENTO DE PRONTUÁRIO\n')
                     time.sleep(1)
                     header = [
@@ -11920,15 +11767,16 @@ def gerar_arquivos():
                         writer.writerow(header)
                 if os.path.exists("cadastro.csv") == False:
                     # ARQUIVO PARA DADOS QUE SE PERDEM CASO PRESCRIÇÃO NÃO FINALIZE
-                    print("Criando arquivo de cadastro.csv...").upper()
-                    print('ARQUIVO PARA DADOS QUE SE PERDEM CASO PRESCRIÇÃO NÃO FINALIZE\n')
+                    print("Criando arquivo de cadastro.csv...".upper())
+                    print(
+                        'ARQUIVO PARA DADOS QUE SE PERDEM CASO PRESCRIÇÃO NÃO FINALIZE\n')
                     time.sleep(1)
                     header = ["CPF", "NOME", "SEXO", "DATA NASCIMENTO", "SUF"]
                     with open("cadastro.csv", "w", encoding="UTF8", newline="") as f:
                         writer = csv.writer(f)
                         writer.writerow(header)
                 print("\n\nPROCESSO FINALIZADO COM SUCESSO! RETORNANDO AO MENU...")
-                time.sleep(4)
+                time.sleep(6)
                 break
         except:
             continue
@@ -13995,14 +13843,17 @@ atualizações = {
     "TAO 5.0.1": "INSTÁVEL - UPDATE COM ERROS, TENTATIVA DE AJUSTES SEM DOWNGRADE DE VERSÃO",
     "TAO 5.0.2": "INSTÁVEL - UPDATE COM ERROS, SUCESSO DE PATCH, EM TESTES, INSERIDO MÓDULO DE ENDEREÇO FIXADO (PINPOINT)",
     'TAO 5.1': 'CORREÇÃO DOS SEGUINTES PROBLEMAS: ERRO SOLICITANDO NOVAMENTE ENDEREÇO AO USAR PINPOINT DEVIDO A USO DE .CSV, ARQUIVO USANDO .TXT POR SER LINHA ÚNICA RESOLVEU PROBLEMA, ERRO DE QUICK==TRUE NÃO PULAR O QUESTIONÁRIO POR CÁLCULOS DE DIFERENÇAS, HDA EM BRANCO SAI TRACEJADA, EXPORT2 GERAVA LISTA COMO STRING PARA BASE DE DADOS (ATRAPALHANDO FUTURAMENTE A BASE DE TREINAMENTO, ADIÇÃO DE INFORMAÇÕES SOBRE AS QUATRO BASES DE DADOS NO INFO, ARMAZENAMENTO DE PINPOINT DE ENDEREÇO RÁPIDO MOVIDO DE RAM PARA ARQUIVO (FICANDO DISPONÍVEL EM SCRIPTS), ERRO aix1 SAI 0 EM VIRTUDE DE SER FUNÇÃO DE COMPREENSÃO DE PYTHON, FINALIZADO TESTES DE BASE DE TREINO DE REGLOG/SVM, A PARTIR DESTA VERSÃO ESTANDO AJUSTADOS PARA COLETA. RESPECTIVAMENTE PARA BASE DE TREINAMENTOS DE ALGORÍTMOS NOS DADOS ABAIXO: EXPORT1=LÍNGUA (NUMERADA) ELEVADA AO QUADRADO, 18 NÚMEROS SEQUENCIAIS CORRESPONDENDO A ZHANG FU EM SEQUÊNCIA P(SUP/XUE/PROFUNDO)/BP(SUP/XUE/PROFUNDO)/PC(SUP/XUE/PROFUNDO)/C(SUP/XUE/PROFUNDO)/F(SUP/XUE/PROFUNDO)/R(SUP/XUE/PROFUNDO), EXPORT3=USANDO LETRAS CONVERTIDAS EM NÚMEROS E EXPONENCIADOS AO QUADRADO, EXPORT4=COMPLEIÇÃO 1=C 2=BP 3=P 4=R 5=F 0=SEM COMPLEIÇÃO, export5(SIM PULOU MESMO!)=EXAME RENYNG 1=C 2=BP 3=P 4=R 5=F 0=NORMAL, aix1=DIAGNÓSTICOS USAR NUMERAÇÃO DE DX PRINCIPAL DO PROGRAMA E NÚMERO EXPONENCIADO AO QUADRADO E SOMADO SE MAIS DE UM (SOMA DAS EXPONENCIAIS) (EVITA SIMULTANEIDADE DE PRODUTOS SOMADOS, E.G. DX1+2+3=6 DX1 E DX5 TAMBÉM DÁ 6 MESMO SENDO OUTROS DX, PORÉM EXPONENCIADOS SEQUENCIALMENTE: 14 E 26) META DE DADOS: USAR EM SUPPORT MACHINE VECTORS OU REGLOG',
-    'TAO 5.1.1': 'INSTÁVEL - CORREÇÃO TEMPORAL DE ADIÇÕES E REDUÇÕES EM DIAS DE 24H CAUSANDO HORAS NEGATIVAS OU ACIMA DE 24H, INSERÇÃO DE SPLITTING DE PULSOS PERMITINDO INSERÇÃO MASSIVA SIMULTÂNEA COM COLETA E ANÁLISE SÍNCRONA EM FUNÇÕES PRÉVIAS'
-    'TAO 5.1.2': 'CORREÇÃO DOS ERROS DE PROGRAMA RELACIONADOS A IMPLANTAÇÃO DE BASE DE DADOS PARA AI - IMPLEMENTAÇÃO INICIAL DE TESTES DE 6 FUNÇÕES ARITMÉTICAS PARA DETERMINAR OS DIAGNÓTICOS MATEMATICAMENTE, SENDO USADOS AOS DIAGNÓSTICOS NUMERAIS (E.G. DIAGNÓSTICO 203 E DIAGNÓSTICO 178): (A)SOMA DOS QUADRADOS DE DIAGNÓSTICO(S), (B)SOMA DE DIAGNÓSTICO(S), (C)PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S),(D)PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S),(E)PRODUTO DE DIAGNÓSTICO(S),(F)QUANTIDADE DE DIAGNÓSTICO(S) - AINDA EM AJUSTE'
+    'TAO 5.1.1': 'INSTÁVEL - CORREÇÃO TEMPORAL DE ADIÇÕES E REDUÇÕES EM DIAS DE 24H CAUSANDO HORAS NEGATIVAS OU ACIMA DE 24H, INSERÇÃO DE SPLITTING DE PULSOS PERMITINDO INSERÇÃO MASSIVA SIMULTÂNEA COM COLETA E ANÁLISE SÍNCRONA EM FUNÇÕES PRÉVIAS',
+    'TAO 5.1.2': 'CORREÇÃO DOS ERROS DE PROGRAMA RELACIONADOS A IMPLANTAÇÃO DE BASE DE DADOS PARA AI - IMPLEMENTAÇÃO INICIAL DE TESTES DE 6 FUNÇÕES ARITMÉTICAS PARA DETERMINAR OS DIAGNÓTICOS MATEMATICAMENTE, SENDO USADOS AOS DIAGNÓSTICOS NUMERAIS (E.G. DIAGNÓSTICO 203 E DIAGNÓSTICO 178): (A)SOMA DOS QUADRADOS DE DIAGNÓSTICO(S), (B)SOMA DE DIAGNÓSTICO(S), (C)PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S),(D)PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S),(E)PRODUTO DE DIAGNÓSTICO(S),(F)QUANTIDADE DE DIAGNÓSTICO(S) - AINDA EM AJUSTE',
+    'TAO 5.1.3': 'CORREÇÕES DE TABULAÇÕES E ESCOLHAS DE DESIGN',
 }
-# ERROS CATALOGADOS [  29 30 31 32 33 34 35  ]
+# ERROS CATALOGADOS [ 1 2 3 4 * 29 30 31 32 33 34 35 ]
+# ADICIONAR SOMENTE EM ORDEM CRESCENTE PARA LOCALIZAR, INSERIR * ENTRE DISPONÍVEIS
 prel = []
 [prel.extend([k, v]) for k, v in atualizações.items()]
 global ver
 ver = str(prel[-2])
+
 
 def conexão():
     while True:
@@ -14028,7 +13879,10 @@ def conexão():
                 rede = True
                 home()
             else:
-                warn_pun.add('FALHA DE TESTAGEM DE CONEXÃO POR MÚLTIPLOS MÉTODOS!')
+                warn_pun.add(
+                    'FALHA DE TESTAGEM DE CONEXÃO POR MÚLTIPLOS MÉTODOS!')
                 rede = False
-                home()                
+                home()
+
+
 conexão()
