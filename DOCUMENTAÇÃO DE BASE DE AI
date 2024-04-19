@@ -1,0 +1,469 @@
+
+
+DOCUMENTAÇÃO DE BASE DE DADOS PARA ALGORÍTMO DE INTELIGÊNCIA ARTIFICIAL
+
+[ ] = INDEXAÇÃO DE DADOS NA LISTA
+
+[0] DIAGNÓSTICO(S) - ANEXO B
+    >>> LOOP: LDX[i]
+    DIAGNÓSTICOS INDIVIDUAIS ITERADOS
+    UM EXAME PODE FORNECER MÚLTIPLAS ENTRADAS
+
+[1] QUANTIDADE DE DIAGNÓSTICO(S) DO EXAME - CÁLCULO
+    CONTROLE DE DADOS DE DIAGNÓSTICOS: PRIMEIRA FUNÇÃO LÓGICA (INDEXADA DIFERENTE PARA MELHOR VISUALIZAÇÃO)
+    >>> AIX5
+        Quantidade de diagnósticos
+        int(len(seta)) (3 se x x x) (2 se x x) (1 se x) (6 se x x x x x x)
+        sendo, len a quantidade de diagnósticos x
+        CONTROLE LÓGICO: PRIORIDADE DO DIAGNÓSTICO INDIVIDUAL QUANTO MENOR FOR
+
+[2] LÍNGUA - ANÁLISE DE LÍNGUA
+    LÍNGUA NÚMERO ELEVADA AO QUADRADO COMO A SOMA DOS QUADRADOS (EM TABELA JÁ CALCULADOS)
+    >>> EXPORT1
+
+[3] SEXO-IDADE - COLETA DE DADOS
+    SEXO E IDADE CLASSIFICADOS NUMERICAMENTE
+    SEXO M: IDADE*1, SEXO F: IDADE**2
+    >>> EXPORT2
+
+PULSOLOGIA CHINESA ZHANG FU
+D1=PULMÃO /D2=BAÇO /D3=TRIPLO AQUECEDOR /E1=CORAÇÃO /E2=FÍGADO /E3=RINS
+NUMERADOS EM 1, 2 OU 3 EXCLUSIVAMENTE
+    [4] D1A
+    [5] D1B
+    [6] D1C
+    [7] D2A
+    [8] D2B
+    [9] D2C
+    [10] D3A
+    [11] D3B
+    [12] DD3C
+    [13] E1A
+    [14] E1B
+    [15] E1C
+    [16] E2A
+    [17] E2B
+    [18] E2C
+    [19] E3A
+    [20] E3B
+    [21] E3C
+
+[22] TIPOS DE PULSOS - ANEXO A
+    ANÁLISES NÃO MERIDIONAIS E SIM DE TIPOS DE PULSOS (PULSO FINO, CURTO, LONGO, RÁPIDO, VAZIO, ENCHARCADO, CORDA...)
+    REALIZADA SOMA DE QUADRADOS SEGUNDO A REPRESENTAÇÃO NUMÉRICA INFORMADA EM PARATRIZAÇÃO DO PROGRAMA
+    >>> EXPORT3
+
+[23] COMPLEIÇÃO INFORMADA - ANEXO C
+    ANÁLISE DA PRESCRIÇÃO
+    >>> EXPORT4
+
+[24] COMPLEIÇÃO RENYING  - ANEXO C
+    ANÁLISE SECUNDÁRIA DE CONTROLE CALCULADA SEGUNDO A TÉCNICA DESCRITA EM CLÁSSICO INTERNO DA MEDICINA INTERNA DO IMPERADOR AMARELO
+    >>> EXPORT5
+
+[25] SOMA DOS QUADRADOS DE DIAGNÓSTICO(S) - CÁLCULO
+    CONTROLE DE DADOS DE DIAGNÓSTICOS: PRIMEIRA FUNÇÃO LÓGICA
+    >>> AIX1
+        Soma dos quadrados
+        x**2+x**2+x**2
+        sendo, x(n) = os números dos diagnóstico(s) selecionado(s)
+
+[26] SOMA DE DIAGNÓSTICO(S) - CÁLCULO
+    CONTROLE DE DADOS DE DIAGNÓSTICOS: SEGUNDA FUNÇÃO LÓGICA
+    >>> AIX2
+        Soma
+        x+x+x+x
+        sendo, x(n) = os números dos diagnóstico(s) selecionado(s)
+
+[27] PRODUTO DA SOMA DE 135 SUBTRAIDOS ADENDOS DE DIAGNÓSTICO(S) - CÁLCULO
+    CONTROLE DE DADOS DE DIAGNÓSTICOS: TERCEIRA FUNÇÃO LÓGICA
+    >>> AIX3
+        Soma de 135 subtraindo adendos
+        135-x + 135-x + 135-x + 135-x
+        sendo, x(n) = os números dos diagnóstico(s) selecionado(s)
+
+[28] PRODUTO DA SOMA DE ADENDOS SUBTRAÍDOS DE 180 DE DIAGNÓSTICO(S) - CÁLCULO
+    CONTROLE DE DADOS DE DIAGNÓSTICOS: QUARTA FUNÇÃO LÓGICA
+    >>> AIX4
+        Soma de adendos subtraindo 180
+        x-180+x-180+x-180
+        sendo, x(n) = os números dos diagnóstico(s) selecionado(s)
+        CONTROLE LÓGICO: MUITOS DIAGNÓSTICOS ENTRE 160-200, SENDO ESSE PARÂMETRO PARA DETECTAR DIAGNÓSTICOS INCOMUNS/RAROS
+
+SETA= SET DE PROGRAMA PYTHON COLETANDO EM PROGRAMA OS DIAGNÓSTICOS DE TRATAMENTO CONFORME ANEXO B
+
+ANEXO A
+TIPOLOGIA DE PULSOS
+1 Pulso patológico - Fu (flutuante)
+2 Pulso patológico - Chen (profundo)
+3 Pulso patológico - Chi (lento)
+4 Pulso patológico - Shu (rápido)
+5 Pulso patológico - Xu (vazio)
+6 Pulso patológico - Shi (cheio)
+7 Pulso patológico - Hua (deslizante)
+8 Pulso patológico - Se (áspero)
+9 Pulso patológico - Chang (longo)
+10 Pulso patológico - Duan (curto)
+11 Pulso patológico - Hong (transbordante)
+12 Pulso patológico - Xi (fino)
+13 Pulso patológico - Wei (mínimo)
+14 Pulso patológico - Jin (tenso)
+15 Pulso patológico - Xian (corda)
+16 Pulso patológico - Huan (retardadodo)
+17 Pulso patológico - Kou (oco)
+18 Pulso patológico - Ge (couro)
+19 Pulso patológico - Lao (firme)
+20 Pulso patológico - Ru (encharcado)
+21 Pulso patológico - Ruo (fraco)
+22 Pulso patológico - San (disperso)
+23 Pulso patológico - Fua (escorregadio)
+24 Pulso patológico - Dong (móvel)
+25 Pulso patológico - Cu (precipitado)
+26 Pulso patológico - Jie (nodoso)
+27 Pulso patológico - Dai (intermitente)
+28 Pulso patológico - Ji (acelerado) ou Da (grande)
+
+ANEXO B
+DIAGNÓSTICOS
+0 Deficiência de Xue em Canal de Coração e Intestino Delgado
+1 Deficiência de Xue em Canal de Baço/Pâncreas e Estômago
+2 Deficiência de Xue em Canal de Pericárdio e Triplo Aquecedor
+3 Deficiência de Xue em Canal de Pulmão e Intestino Grosso
+4 Deficiência de Xue em Canal de Rim e Bexiga
+5 Deficiência de Xue em Canal de Fígado e Vesícula Biliar
+6 Deficiência de Yin em Canal de Coração e Intestino Delgado
+7 Deficiência de Yin em Canal de Baço/Pâncreas e Estômago
+8 Deficiência de Yin em Canal de Pericárdio e Triplo Aquecedor
+9 Deficiência de Yin em Canal de Pulmão e Intestino Grosso
+10 Deficiência de Yin em Canal de Rim e Bexiga
+11 Deficiência de Yin em Canal de Fígado e Vesícula Biliar
+12 Deficiência de Yang em Canal de Coração e Intestino Delgado
+13 Deficiência de Yang em Canal de Baço/Pâncreas e Estômago
+14 Deficiência de Yang em Canal de Pericárdio e Triplo Aquecedor
+15 Deficiência de Yang em Canal de Pulmão e Intestino Grosso
+16 Deficiência de Yang em Canal de Rim e Bexiga
+17 Deficiência de Yang em Canal de Fígado e Vesícula Biliar
+18 Deficiência de Qi em Canal de Coração e Intestino Delgado
+19 Deficiência de Qi em Canal de Baço/Pâncreas e Estômago
+20 Deficiência de Qi em Canal de Pericárdio e Triplo Aquecedor
+21 Deficiência de Qi em Canal de Pulmão e Intestino Grosso
+22 Deficiência de Qi em Canal de Rim e Bexiga
+23 Deficiência de Qi em Canal de Fígado e Vesícula Biliar
+24 Deficiência de Yuan em Canal de Coração e Intestino Delgado
+25 Deficiência de Yuan em Canal de Baço/Pâncreas e Estômago
+26 Deficiência de Yuan em Canal de Pericárdio e Triplo Aquecedor
+27 Deficiência de Yuan em Canal de Pulmão e Intestino Grosso
+28 Deficiência de Yuan em Canal de Rim e Bexiga
+29 Deficiência de Yuan em Canal de Fígado e Vesícula Biliar
+30 Deficiência de mar de Qi em Canal de Coração e Intestino Delgado
+31 Deficiência de mar de Qi em Canal de Baço/Pâncreas e Estômago
+32 Deficiência de mar de Qi em Canal de Pericárdio e Triplo Aquecedor
+33 Deficiência de mar de Qi em Canal de Pulmão e Intestino Grosso
+34 Deficiência de mar de Qi em Canal de Rim e Bexiga
+35 Deficiência de mar de Qi em Canal de Fígado e Vesícula Biliar
+36 Deficiência de mar de Xue em Canal de Coração e Intestino Delgado
+37 Deficiência de mar de Xue em Canal de Baço/Pâncreas e Estômago
+38 Deficiência de mar de Xue em Canal de Pericárdio e Triplo Aquecedor
+39 Deficiência de mar de Xue em Canal de Pulmão e Intestino Grosso
+40 Deficiência de mar de Xue em Canal de Rim e Bexiga
+41 Deficiência de mar de Xue em Canal de Fígado e Vesícula Biliar
+42 Deficiência de mar de Gu em Canal de Coração e Intestino Delgado
+43 Deficiência de mar de Gu em Canal de Baço/Pâncreas e Estômago
+44 Deficiência de mar de Gu em Canal de Pericárdio e Triplo Aquecedor
+45 Deficiência de mar de Gu em Canal de Pulmão e Intestino Grosso
+46 Deficiência de mar de Gu em Canal de Rim e Bexiga
+47 Deficiência de mar de Gu em Canal de Fígado e Vesícula Biliar
+48 Deficiência de mar de Xiang em Canal de Coração e Intestino Delgado
+49 Deficiência de mar de Xiang em Canal de Baço/Pâncreas e Estômago
+50 Deficiência de mar de Xiang em Canal de Pericárdio e Triplo Aquecedor
+51 Deficiência de mar de Xiang em Canal de Pulmão e Intestino Grosso
+52 Deficiência de mar de Xiang em Canal de Rim e Bexiga
+53 Deficiência de mar de Xiang em Canal de Fígado e Vesícula Biliar
+54 Estagnação de Xue em Canal de Coração e Intestino Delgado
+55 Estagnação de Xue em Canal de Baço/Pâncreas e Estômago
+56 Estagnação de Xue em Canal de Pericárdio e Triplo Aquecedor
+57 Estagnação de Xue em Canal de Pulmão e Intestino Grosso
+58 Estagnação de Xue em Canal de Rim e Bexiga
+59 Estagnação de Xue em Canal de Fígado e Vesícula Biliar
+60 Estagnação de Qi em Canal de Coração e Intestino Delgado
+61 Estagnação de Qi em Canal de Baço/Pâncreas e Estômago
+62 Estagnação de Qi em Canal de Pericárdio e Triplo Aquecedor
+63 Estagnação de Qi em Canal de Pulmão e Intestino Grosso
+64 Estagnação de Qi em Canal de Rim e Bexiga
+65 Estagnação de Qi em Canal de Fígado e Vesícula Biliar
+66 Excesso de Qi em Canal de Coração e Intestino Delgado
+67 Excesso de Qi em Canal de Baço/Pâncreas e Estômago
+68 Excesso de Qi em Canal de Pericárdio e Triplo Aquecedor
+69 Excesso de Qi em Canal de Pulmão e Intestino Grosso
+70 Excesso de Qi em Canal de Rim e Bexiga
+71 Excesso de Qi em Canal de Fígado e Vesícula Biliar
+72 Excesso de Xue em Canal de Coração e Intestino Delgado
+73 Excesso de Xue em Canal de Baço/Pâncreas e Estômago
+74 Excesso de Xue em Canal de Pericárdio e Triplo Aquecedor
+75 Excesso de Xue em Canal de Pulmão e Intestino Grosso
+76 Excesso de Xue em Canal de Rim e Bexiga
+77 Excesso de Xue em Canal de Fígado e Vesícula Biliar
+78 Excesso de mar de Gu em Canal de Coração e Intestino Delgado
+79 Excesso de mar de Gu em Canal de Baço/Pâncreas e Estômago
+80 Excesso de mar de Gu em Canal de Pericárdio e Triplo Aquecedor
+81 Excesso de mar de Gu em Canal de Pulmão e Intestino Grosso
+82 Excesso de mar de Gu em Canal de Rim e Bexiga
+83 Excesso de mar de Gu em Canal de Fígado e Vesícula Biliar
+84 Excesso de mar de Xiang em Canal de Coração e Intestino Delgado
+85 Excesso de mar de Xiang em Canal de Baço/Pâncreas e Estômago
+86 Excesso de mar de Xiang em Canal de Pericárdio e Triplo Aquecedor
+87 Excesso de mar de Xiang em Canal de Pulmão e Intestino Grosso
+88 Excesso de mar de Xiang em Canal de Rim e Bexiga
+89 Excesso de mar de Xiang em Canal de Fígado e Vesícula Biliar
+90 Frio Interno em Canal de Coração e Intestino Delgado
+91 Frio Interno em Canal de Baço/Pâncreas e Estômago
+92 Frio Interno em Canal de Pericárdio e Triplo Aquecedor
+93 Frio Interno em Canal de Pulmão e Intestino Grosso
+94 Frio Interno em Canal de Rim e Bexiga
+95 Frio Interno em Canal de Fígado e Vesícula Biliar
+96 Frio Externo em Canal de Coração e Intestino Delgado
+97 Frio Externo em Canal de Baço/Pâncreas e Estômago
+98 Frio Externo em Canal de Pericárdio e Triplo Aquecedor
+99 Frio Externo em Canal de Pulmão e Intestino Grosso
+100 Frio Externo em Canal de Rim e Bexiga
+101 Frio Externo em Canal de Fígado e Vesícula Biliar
+102 Calor Interno em Canal de Coração e Intestino Delgado
+103 Calor Interno em Canal de Baço/Pâncreas e Estômago
+104 Calor Interno em Canal de Pericárdio e Triplo Aquecedor
+105 Calor Interno em Canal de Pulmão e Intestino Grosso
+106 Calor Interno em Canal de Rim e Bexiga
+107 Calor Interno em Canal de Fígado e Vesícula Biliar
+108 Calor Externo em Canal de Coração e Intestino Delgado
+109 Calor Externo em Canal de Baço/Pâncreas e Estômago
+110 Calor Externo em Canal de Pericárdio e Triplo Aquecedor
+111 Calor Externo em Canal de Pulmão e Intestino Grosso
+112 Calor Externo em Canal de Rim e Bexiga
+113 Calor Externo em Canal de Fígado e Vesícula Biliar
+114 Fleuma/umidade em Canal de Coração e Intestino Delgado
+115 Fleuma/umidade em Canal de Baço/Pâncreas e Estômago
+116 Fleuma/umidade em Canal de Pericárdio e Triplo Aquecedor
+117 Fleuma/umidade em Canal de Pulmão e Intestino Grosso
+118 Fleuma/umidade em Canal de Rim e Bexiga
+119 Fleuma/umidade em Canal de Fígado e Vesícula Biliar
+120 Secura em Canal de Coração e Intestino Delgado
+121 Secura em Canal de Baço/Pâncreas e Estômago
+122 Secura em Canal de Pericárdio e Triplo Aquecedor
+123 Secura em Canal de Pulmão e Intestino Grosso
+124 Secura em Canal de Rim e Bexiga
+125 Secura em Canal de Fígado e Vesícula Biliar
+126 Vento Interno em Canal de Coração e Intestino Delgado
+127 Vento Interno em Canal de Baço/Pâncreas e Estômago
+128 Vento Interno em Canal de Pericárdio e Triplo Aquecedor
+129 Vento Interno em Canal de Pulmão e Intestino Grosso
+130 Vento Interno em Canal de Rim e Bexiga
+131 Vento Interno em Canal de Fígado e Vesícula Biliar
+132 Vento Externo em Canal de Coração e Intestino Delgado
+133 Vento Externo em Canal de Baço/Pâncreas e Estômago
+134 Vento Externo em Canal de Pericárdio e Triplo Aquecedor
+135 Vento Externo em Canal de Pulmão e Intestino Grosso
+136 Vento Externo em Canal de Rim e Bexiga
+137 Vento Externo em Canal de Fígado e Vesícula Biliar
+138 Wen Bing/ Wang Shuhe/ Canícula
+139 Wen Bing/ Wang Shuhe/ Calor de verão
+140 Wen Bing/ Wang Shuhe/ Calor-Umidade
+141 Wen Bing/ Wang Shuhe/ Calor-Pestilência
+142 Wen Bing/ Wang Shuhe/ Calor Tóxico
+143 Wen Bing/ Wang Shuhe/ Calor Latente
+144 Colapso em Canal de Coração e Intestino Delgado
+145 Colapso em Canal de Baço/Pâncreas e Estômago
+146 Colapso em Canal de Pericárdio e Triplo Aquecedor
+147 Colapso em Canal de Pulmão e Intestino Grosso
+148 Colapso em Canal de Rim e Bexiga
+149 Colapso em Canal de Fígado e Vesícula Biliar
+150 Ni qi de Baço
+151 Ni qi de Estômago
+152 Ni qi de Pulmão
+153 Ni qi de Coração
+154 Ni qi de Fígado (não ascende)
+155 Ni qi de Fígado (não descende)
+156 Ni qi de Rim
+157 Ni qi de Bexiga
+158 Ni qi de Intestino Grosso
+159 Ni qi de Intestino Delgado
+160 Hui dos Zhang (Órgãos)
+161 Hui dos Fu (Vísceras)
+162 Hui do Qi
+163 Hui do Xue
+164 Hui dos Tendões
+165 Hui dos Vasos
+166 Hui dos Ossos
+167 Hui da Medula/Cérebro
+168 Calor Cheio em Canal de Coração e Intestino Delgado
+169 Calor Cheio em Canal de Baço/Pâncreas e Estômago
+170 Calor Cheio em Canal de Pericárdio e Triplo Aquecedor
+171 Calor Cheio em Canal de Pulmão e Intestino Grosso
+172 Calor Cheio em Canal de Rim e Bexiga
+173 Calor Cheio em Canal de Fígado e Vesícula Biliar
+174 Calor Vazio em Canal de Coração e Intestino Delgado
+175 Calor Vazio em Canal de Baço/Pâncreas e Estômago
+176 Calor Vazio em Canal de Pericárdio e Triplo Aquecedor
+177 Calor Vazio em Canal de Pulmão e Intestino Grosso
+178 Calor Vazio em Canal de Rim e Bexiga
+179 Calor Vazio em Canal de Fígado e Vesícula Biliar
+180 Frio Cheio em Canal de Coração e Intestino Delgado
+181 Frio Cheio em Canal de Baço/Pâncreas e Estômago
+182 Frio Cheio em Canal de Pericárdio e Triplo Aquecedor
+183 Frio Cheio em Canal de Pulmão e Intestino Grosso
+184 Frio Cheio em Canal de Rim e Bexiga
+185 Frio Cheio em Canal de Fígado e Vesícula Biliar
+186 Frio Vazio em Canal de Coração e Intestino Delgado
+187 Frio Vazio em Canal de Baço/Pâncreas e Estômago
+188 Frio Vazio em Canal de Pericárdio e Triplo Aquecedor
+189 Frio Vazio em Canal de Pulmão e Intestino Grosso
+190 Frio Vazio em Canal de Rim e Bexiga
+191 Frio Vazio em Canal de Fígado e Vesícula Biliar
+192 Deficiência de Triplo Aquecedor Superior
+193 Deficiência de Triplo Aquecedor Médio
+194 Deficiência de Triplo Aquecedor Inferior
+195 Excesso de Triplo Aquecedor Superior
+196 Excesso de Triplo Aquecedor Médio
+197 Excesso de Triplo Aquecedor Inferior
+198 Wen Bing/ Ye Tian Shi/ nível Wei
+199 Wen Bing/ Ye Tian Shi/ nível Qi
+200 Wen Bing/ Ye Tian Shi/ nível Ying
+201 Wen Bing/ Ye Tian Shi/ nível Xue
+202 Padrão Patológico de Tai Yang
+203 Padrão Patológico de Yang Ming
+204 Padrão Patológico de Shao Yang
+205 Padrão Patológico de Tai Yin
+206 Padrão Patológico de Shao Yin
+207 Padrão Patológico de Jue Yin
+208 Fleuma-fogo em Canal de Coração e Intestino Delgado
+209 Fleuma-fogo em Canal de Baço/Pâncreas e Estômago
+210 Fleuma-fogo em Canal de Pericárdio e Triplo Aquecedor
+211 Fleuma-fogo em Canal de Pulmão e Intestino Grosso
+212 Fleuma-fogo em Canal de Rim e Bexiga
+213 Fleuma-fogo em Canal de Fígado e Vesícula Biliar
+214 Fogo interno causado por Estagnação em Canal de Coração e Intestino Delgado
+215 Fogo interno causado por Estagnação em Canal de Baço/Pâncreas e Estômago
+216 Fogo interno causado por Estagnação em Canal de Pericárdio e Triplo Aquecedor
+217 Fogo interno causado por Estagnação em Canal de Pulmão e Intestino Grosso
+218 Fogo interno causado por Estagnação em Canal de Rim e Bexiga
+219 Fogo interno causado por Estagnação em Canal de Fígado e Vesícula Biliar
+220 Padrão Patológico de Dai Mai (vaso de cintura)
+221 Padrão Patológico de Chong Mai (VP)
+222 Padrão Patológico de Du Mai (VG)
+223 Padrão Patológico de Ren Mai(VC)
+224 Padrão Patológico de Yang Qiao Mai
+225 Padrão Patológico de Yin Qiao Mai
+226 Padrão Patológico de Yang Wei Mai
+227 Padrão Patológico de Yin Wei Mai
+228 Fleuma afetando Mente/Pensamentos (Shen)
+229 Alteração de Jing Jin de Pulmão
+230 Alteração de Jing Jin de Intestino Grosso
+231 Alteração de Jing Jin de Baço
+232 Alteração de Jing Jin de Estômago
+233 Alteração de Jing Jin de Pericárdio
+234 Alteração de Jing Jin de Triplo Aquecedor
+235 Alteração de Jing Jin de Coração
+236 Alteração de Jing Jin de Intestino Delgado
+237 Alteração de Jing Jin de Fígado
+238 Alteração de Jing Jin de Vesícula Biliar
+239 Alteração de Jing Jin de Rim
+240 Alteração de Jing Jin de Bexiga
+241 Doença de canal Lou de Pulmão
+242 Doença de canal Lou de Intestino Grosso
+243 Doença de canal Lou de Baço
+244 Doença de canal Lou de Estômago
+245 Doença de canal Lou de Pericárdio
+246 Doença de canal Lou de Triplo Aquecedor
+247 Doença de canal Lou de Coração
+248 Doença de canal Lou de Intestino Delgado
+249 Doença de canal Lou de Fígado
+250 Doença de canal Lou de Vesícula Biliar
+251 Doença de canal Lou de Rim
+252 Doença de canal Lou de Bexiga
+253 Distúrbio de Shen-Coração - Xiang
+254 Distúrbio de Shen-Baço - Yi
+255 Distúrbio de Shen-Pulmão - Po
+256 Distúrbio de Shen-Rim - Zhi
+257 Distúrbio de Shen-Fígado - Hun
+258 Wen Bing/ Wu Ju Tong/ Tai Yin da mão (P)
+259 Wen Bing/ Wu Ju Tong/ Jue Yin da mão (PC)
+260 Wen Bing/ Wu Ju Tong/ Yang Ming do pé (E)
+261 Wen Bing/ Wu Ju Tong/ Yang Ming da mão (IG)
+262 Wen Bing/ Wu Ju Tong/ Tai Yin do pé (BP)
+263 Wen Bing/ Wu Ju Tong/ Shao Yin do pé (R)
+264 Wen Bing/ Wu Ju Tong/ Jue Yin do pé (F)
+265 Shang Han Lun/ Shang Han
+266 Shang Han Lun/ Zhong Feng
+267 Shang Han Lun/ Feng Wen
+268 Shang Han Lun/ Wen Bing
+
+ANEXO C
+COMPLEIÇÕES
+1 coração/ vermelha
+2 baço/ amarela
+3 pulmão/ branca
+4 rim/ preta
+5 fígado/ verde
+
+ANEXO D
+ANÁLISE DE LÍNGUA
+1 Longa (alta)
+4 Curta (baixa)
+9 Fina (magra)
+16 Grossa (gorda)
+25 Duro (demora para levantar
+36 Flácido
+49 Trêmulo
+64 Desviado (pára em lugar errado)
+81 Linha média
+100 Periférico
+121 Afta
+144 Marca de dente, 
+164 Petéquias
+196 Saburra Branca
+225 Saburra Amarela/Laranja
+256 Saburra Cinza (um branco mais sujo)
+289 Fissurada em Hemilíngua,
+324 Fissurda em Meio
+361 Fissura Periférica
+400 Ausência Total de saburra
+441 Línga Vermelha
+484 Língua Azul-branco
+529 Língua Roxo-escuro
+576 Língua Branca
+625 Sialorréia
+676 Pegajosa
+729 Xerostomia (dente sem brilho)
+
+ANEXO E
+TABELA ACESSÓRIA DE REFERÊNCIA PARA ELEVAR AO QUADRADO E GERAR TABELA PRINCIPAL ANEXO D
+1 Longa (alta)
+2 Curta (baixa)
+3 Fina (magra)
+4 Grossa (gorda)
+5 Duro (demora para levantar
+6 Flácido
+7 Trêmulo
+8 Desviado (pára em lugar errado)
+9 Linha média
+10 Periférico
+11 Afta
+12 Marca de dente, 
+13 Petéquias
+14 Saburra Branca
+15 Saburra Amarela/Laranja
+16 Saburra Cinza (um branco mais sujo)
+17 Fissurada em Hemilíngua,
+18 Fissurda em Meio
+19 Fissura Periférica
+20 Ausência Total de saburra
+21 Línga Vermelha
+22 Língua Azul-branco
+23 Língua Roxo-escuro
+24 Língua Branca
+A cor normal é rosa e não deve ser adicionada
+Não confunda com a cor de saburra (cama acima de língua)
+25 Sialorréia
+26 Pegajosa
+27 Xerostomia (dente sem brilho)
+
+
+----------------------------------------------------------------------------------------- FIM DE DOCUMENTAÇÃO
